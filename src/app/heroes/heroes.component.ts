@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Hero } from '../hero';
+import { HeroService } from '../service/hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-
-  constructor() { }
+heroList$: BehaviorSubject<Hero[]>= this.heroService.list$;
+  constructor(
+    private heroService: HeroService,
+  ) { }
 
   ngOnInit(): void {
+    this.heroService.getAll();
   }
 
 }
