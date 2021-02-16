@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Hero } from '../hero';
 import { HeroService } from '../service/hero.service';
 
+
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -10,6 +11,7 @@ import { HeroService } from '../service/hero.service';
 })
 export class HeroesComponent implements OnInit {
 heroList$: BehaviorSubject<Hero[]>= this.heroService.list$;
+phrase: string='';
   constructor(
     private heroService: HeroService,
   ) { }
